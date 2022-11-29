@@ -10,7 +10,7 @@ const count = ref(0);
 </script>
 
 <template>
-  <!-- {{ data }} -->
+  {{ data }}
   <table
     style="
       position: relative;

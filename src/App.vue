@@ -10,8 +10,11 @@ let data = ref({
   subject: '',
   description: '',
   discCode: '',
-  logo: '',
+  logo: 'https://picsum.photos/100',
   image: '',
+  startDate: null,
+  endDate: null,
+  timezone: '+1000',
 });
 let scriptTag = ref(`
 [{
@@ -39,8 +42,8 @@ let scriptTag = ref(`
   "description": "${data.description}",
 
   "discountCode": "${data.discCode}",
-  "availabilityStarts": "2022-11-22T20:18:37-08:00",
-  "availabilityEnds": "2022-11-25T20:18:37-08:00"
+  "availabilityStarts": "${data.startDate}",
+  "availabilityEnds": "${data.endDate}"
 },{
   // Promotion card with single image.
   // We recommend using an https URL.  It's not a requirement today, but may be in the future.
@@ -87,6 +90,21 @@ let scriptTag = ref(`
             :placeholder="imagePlaceholder"
           />
         </div>
+        <div class="input-wrapper date">
+          <label for="">Start Date, Time</label>
+          <input type="datetime-local" v-model="data.startDate" />
+        </div>
+        <div class="input-wrapper date">
+          <label for="">End Date, Time</label>
+          <input type="datetime-local" v-model="data.endDate" />
+        </div>
+      </div>
+      <div class="output">
+        <p>{{ data.startDate }}{{ data.timezone }}</p>
+        <p>2022-11-22T20:18:37-08:00</p>
+        <hr />
+        <p>{{ data.endDate }}{{ data.timezone }}</p>
+        <p>2022-11-25T20:18:37-08:00</p>
       </div>
     </section>
     <section>
@@ -106,6 +124,9 @@ let scriptTag = ref(`
       </div>
     </section>
   </main>
+  <div>
+    {{ scriptTag }}
+  </div>
 </template>
 <style scoped>
 main * {
@@ -151,6 +172,9 @@ section .input-wrapper {
   border-radius: 8px;
   padding: 0.4rem;
   margin-top: 0.1rem;
+}
+section .input-wrapper .date {
+  width: 50%;
 }
 section input {
   min-width: 100%;
