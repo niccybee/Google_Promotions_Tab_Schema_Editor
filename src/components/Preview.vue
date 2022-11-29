@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import dayjs from 'dayjs';
 
 defineProps({
   data: Object,
@@ -9,7 +10,7 @@ const count = ref(0);
 </script>
 
 <template>
-  {{ data }}
+  <!-- {{ data }} -->
   <table
     style="
       position: relative;

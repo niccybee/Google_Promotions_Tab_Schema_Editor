@@ -13,8 +13,8 @@ let data = ref({
   logo: '',
   image: '',
 });
-
-let scriptTag = ref(`[{
+let scriptTag = ref(`
+[{
   "@context": "http://schema.org/",
   "@type": "Organization",
 
@@ -50,12 +50,14 @@ let scriptTag = ref(`[{
   "@context": "http://schema.org/",
   "@type": "PromotionCard",
   "image": "${data.image}"
-}]`);
+}]
+`);
 </script>
 <template>
+  <h1>Google Promotions Schema Editor</h1>
   <main>
-    <section>
-      <h1>Google Promotions Schema Editor</h1>
+    <section class="schema-editor">
+      <h2>Edit</h2>
       <div class="inputs">
         <div class="input-wrapper">
           <label for="">Subject</label>
@@ -92,7 +94,8 @@ let scriptTag = ref(`[{
         <h2>Preview</h2>
         <Preview :data="data" />
       </article>
-      <div>
+      <div class="copy-section">
+        <h2>Copy</h2>
         <textarea
           v-model="scriptTag"
           name=""
@@ -110,27 +113,56 @@ main * {
 }
 main {
   display: flex;
+  min-height: 70vh;
 }
 section {
   box-sizing: border-box;
   width: 50%;
-  background: #2efe;
+  height: 100%;
   margin: 0.2rem;
-  padding: 0.5rem;
+  padding: 1rem;
+}
+section > article {
+  width: 100%;
+  box-sizing: border-box;
+  background: lightblue;
+  margin-bottom: 0.4rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+section > .copy-section {
+  width: 100%;
+  box-sizing: border-box;
+  background: lightblue;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.schema-editor {
+  box-sizing: border-box;
+  width: 50%;
+  background: lightblue;
+  margin: 0.2rem;
+  padding: 1rem;
+  border-radius: 10px;
 }
 section .input-wrapper {
   border: 1px solid gray;
   background: lightgray;
-  padding: 0.2rem;
+  border-radius: 8px;
+  padding: 0.4rem;
+  margin-top: 0.1rem;
 }
 section input {
   min-width: 100%;
   height: 100%;
   border: none;
+  border-radius: 4px;
   padding: 0.5rem 0.5rem;
 }
 section textarea {
   width: 100%;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
 }
 </style>
 
