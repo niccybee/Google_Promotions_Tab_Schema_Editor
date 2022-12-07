@@ -11,7 +11,7 @@ let data = ref({
   description: '',
   discCode: '',
   logo: 'https://picsum.photos/100',
-  image: '',
+  image: 'https://picsum.photos/600/200',
   startDate: null,
   endDate: null,
   timezone: '+1000',
